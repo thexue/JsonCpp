@@ -48,7 +48,7 @@ Json::Json(Type type):m_type(type)
     break;
     case json_string:
     m_value.m_string=new string();
-    default:
+
     break;
    }
 }
