@@ -27,16 +27,19 @@ int main()
    v_array[0]=true;
    v_array[1]=123;
    v_array[2]=1.23;
-   v_array[3]="hello";
-   v_array.append("Yes");
-   //std::cout<<v_array.str()<<endl;
-   b=v_array[0];
-   i=v_array[1];
-   f=v_array[2];
-   string now=v_array[3];
+  // v_array[3]="hello";
+   v_array.append(1);
+   std::cout<<v_array.str()<<endl;
+   cout<<v_array.has(0)<<endl;
+   cout<<v_array.has(10)<<endl;
+ //  cout<<(v_array.m_value.m_array)->size()<<endl;
+   v_array.remove(0);
+  // cout<<(v_array.m_value.m_array)->size()<<endl;
+   cout<<v_array.str()<<endl;
    v_object["bool"]=true;
    v_object["int"]=123;
    v_object["double"]=1.23;
    v_object["str"]="hello word";
   std::cout<< v_object.str()<<endl;
+  
 }

@@ -56,6 +56,7 @@
     operator string();
 ```
 ### Task3
+
 实现数组相关API
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e37593b7431e4f56b66ebd40baae2a88.png)
 
@@ -89,3 +90,34 @@ output：[true,123,1.23,"hello","Yes"]
     void clear();
 ```
 
+### Task5 
+实现如下常用接口
+
+```cpp
+    /*迭代器*/
+    typedef std::vector<Json>::iterator iterator;
+    iterator begin();
+    iterator end();
+    /*是否为某类型*/
+    bool isNull() const ;
+    bool isBoll()const;
+    bool isInt()const ;
+    bool isDouble()const;
+    bool isString()const;
+    bool isArray()const;
+    bool isObject()const;
+   /*返回具体的值*/
+    bool asBool()const;
+    int asInt()const;
+    double sDouble()const;
+    string asString()const;
+   /*判定是否存在某索引*/
+    bool has(int index);
+    bool has(const string key);
+    bool has(const char*key);
+    /*删除某元素*/
+    void remove(int index);
+    void remove(const string key);
+    void remove(const char*key);
+    
+```
