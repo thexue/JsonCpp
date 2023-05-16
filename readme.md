@@ -4,7 +4,7 @@
 ### Task1：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6dd2e2355f1c426ba36a258f9d7bfb82.png)
 ### 设计思路
-通过枚举表示Json的数据type，根据type不同来使用的构造函数，给m_value实际的值
+通过枚举表示Json的数据type，根据type不同来使用构造函数，给m_value实际的值
 ```cpp
  class Json
  {
@@ -54,4 +54,19 @@
     operator int ();
     operator double();
     operator string();
+```
+### Task3
+实现数组相关API
+![在这里插入图片描述](https://img-blog.csdnimg.cn/e37593b7431e4f56b66ebd40baae2a88.png)
+
+```cpp
+output：[true,123,1.23,"hello","Yes"]
+```
+### 设计思路
+重载[]，str使用递归来将对象解析为字符串
+```cpp
+ Json &operator [](int index);
+ void append(const Json &other);
+ string str ()const;
+
 ```
