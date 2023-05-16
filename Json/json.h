@@ -30,6 +30,12 @@ namespace json
     Json(string value);
     Json(Type type);
     Json(const Json &other);
+    operator bool();
+    operator int ();
+    operator double();
+    operator string();
+
+
  private:
      union Value
      {

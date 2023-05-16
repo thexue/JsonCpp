@@ -18,4 +18,9 @@ int main()
    Json v_other_string = v_string;
    Json v_other_array=v_array;
    Json v_other_object =v_object;
+
+   bool b= v_bool;
+   int i=v_int;
+   double f=v_double;
+   const string &s=v_string;
 }

@@ -43,3 +43,14 @@
              
 };
 ```
+### Task2
+实现逆向赋值
+![在这里插入图片描述](https://img-blog.csdnimg.cn/2b00b46b039840a1b5d0d216e49664a9.png)
+### 设计思路
+重载一下基本类型运算符
+```cpp
+    operator bool();
+    operator int ();
+    operator double();
+    operator string();
+```

@@ -80,3 +80,35 @@ Json::Json(const Json &other)
          break;
    }
 }
+Json::operator bool()
+{
+   if(m_type!=json_bool)
+   {
+    throw new logic_error("type error,not bool value");
+   }
+   return m_value.m_bool;
+}
+Json::operator int ()
+{
+    if(m_type!=json_int)
+   {
+    throw new logic_error("type error,not int value");
+   }
+   return m_value.m_int;
+}
+Json:: operator double()
+{
+    if(m_type!=json_double)
+   {
+    throw new logic_error("type error,not double value");
+   }
+    return m_value.m_double;
+}
+Json::operator string()
+{
+    if(m_type!=json_string)
+   {
+    throw new logic_error("type error,not string value");
+   }
+    return *(m_value.m_string);
+}
