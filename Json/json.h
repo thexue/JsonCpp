@@ -34,7 +34,9 @@ namespace json
     operator int ();
     operator double();
     operator string();
-
+    Json &operator [](int index);
+    void append(const Json &other);
+    string str ()const;
 
  private:
      union Value
@@ -43,7 +45,7 @@ namespace json
         int m_int;
         double m_double;
         std::string *m_string;
-        std::vector<Json> * m_vector;
+        std::vector<Json> * m_array;
         std::map<string,Json>* m_object;
     };
     Value m_value;

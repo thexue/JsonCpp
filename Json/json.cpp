@@ -1,5 +1,6 @@
 #pragma once
 #include"json.h"
+#include<sstream>
 using namespace Xzs::json;
 Json::Json(): m_type(json_null)
 {
@@ -41,7 +42,7 @@ Json::Json(Type type):m_type(type)
     m_value.m_double=0.0;
     break;
     case json_array:
-    m_value.m_vector=new vector<Json>();
+    m_value.m_array=new vector<Json>();
     break;
     case json_object:
     m_value.m_object=new std::map<string,Json>;
@@ -69,7 +70,7 @@ Json::Json(const Json &other)
         m_value.m_double=other.m_value.m_double;
         break;
         case json_array:
-        m_value.m_vector=other.m_value.m_vector;
+        m_value.m_array=other.m_value.m_array;
         break;
     case json_object:
         m_value.m_object=other.m_value.m_object;
@@ -111,4 +112,94 @@ Json::operator string()
     throw new logic_error("type error,not string value");
    }
     return *(m_value.m_string);
+}
+Json &Json::operator [](int index)
+{
+   if(m_type!=json_array)
+  {
+    m_type=json_array;
+    m_value.m_array=new vector<Json>;
+  }
+  if(index<0)
+  {
+       throw new logic_error("array[] index <0");
+  }
+  int size=((m_value.m_array)->size());
+  if(index>=size)
+  {
+    for(int i=size;i<=index;i++)
+    {
+      (m_value.m_array)->push_back(Json());
+    }
+  }
+  return (m_value.m_array)->at(index);
+}
+void Json:: append(const Json &other)
+{
+  if(m_type!=json_array)
+  {
+    m_type=json_array;
+    m_value.m_array=new vector<Json>;
+  }
+  (m_value.m_array)->push_back(other);
+}
+string Json::str() const
+{
+     stringstream ss;
+     switch(m_type)
+   {
+    case json_null:
+    ss<<"null";
+    break;
+    case json_int:
+    ss<<m_value.m_int;
+    break;
+    case json_bool:
+      if(m_value.m_bool)
+      {
+        ss<<"true";
+      }
+      else 
+      {
+        ss<<"false";
+      }
+    break;
+    case json_double:
+         ss<<m_value.m_double;
+        break;
+        case json_array:
+      {
+          ss<<'[';
+          for(auto it =((m_value.m_array))->begin();it!=(m_value.m_array)->end();it++)
+          { 
+            if(it!=(m_value.m_array)->begin())
+            {
+                ss<<",";
+            }
+            ss<<it->str();
+          }
+          ss<<']';
+      }
+        break;
+    case json_object:
+       {
+         ss<<'{';
+         for(auto it=(m_value.m_object)->begin();it!=(m_value.m_object)->end();it++)
+         {
+             if(it!=(m_value.m_object)->begin())
+            {
+                ss<<",";
+            }
+            ss<<'\"'<<it->first<<'\"'<<':'<<it->second.str();
+         }
+          ss<<'}';
+       }
+        break;
+    case json_string:
+       ss<<"\""<<*(m_value.m_string)<<"\"";
+        default:
+         break;
+   }
+   return ss.str();
+
 }
