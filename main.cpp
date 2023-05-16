@@ -28,7 +28,7 @@ int main()
    v_array[1]=123;
    v_array[2]=1.23;
   // v_array[3]="hello";
-   v_array.append(1);
+   v_array.append("hello");
    std::cout<<v_array.str()<<endl;
    cout<<v_array.has(0)<<endl;
    cout<<v_array.has(10)<<endl;

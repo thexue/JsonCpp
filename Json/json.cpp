@@ -114,7 +114,7 @@ void Json:: append(const Json &other)
 {  
   if(m_type!=json_array)
   { 
-    //clear();
+    clear();
     m_type=json_array;
     m_value.m_array=new vector<Json>;
   }
@@ -144,7 +144,7 @@ string Json::str() const
     case json_double:
          ss<<m_value.m_double;
         break;
-        case json_array:
+   case json_array:
       {
           ss<<'[';
           for(auto it =((m_value.m_array))->begin();it!=(m_value.m_array)->end();it++)
@@ -172,10 +172,9 @@ string Json::str() const
           ss<<'}';
        }
         break;
-    case json_string:
-       ss<<"\""<<*(m_value.m_string)<<"\"";
-        default:
-         break;
+     case json_string:
+     ss<<"\""<<*(m_value.m_string)<<"\"";
+     break;
    }
    return ss.str();
 
