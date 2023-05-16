@@ -57,7 +57,6 @@
 ```
 ### Task3
 实现数组相关API
-
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e37593b7431e4f56b66ebd40baae2a88.png)
 
 ```cpp
@@ -71,3 +70,22 @@ output：[true,123,1.23,"hello","Yes"]
  string str ()const;
 
 ```
+### Task4
+实现object相关API，并注意内存泄漏的问题
+
+```cpp
+   v_object["bool"]=true;
+   v_object["int"]=123;
+   v_object["double"]=1.23;
+   v_object["str"]="hello word";
+   std::cout<< v_object.str()<<endl;
+```
+### 设计思路
+重载运算符
+```cpp
+    Json &operator [](const char *key);
+    Json &operator [](const string & key);
+    void copy(const Json & other);
+    void clear();
+```
+

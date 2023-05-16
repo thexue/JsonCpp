@@ -35,8 +35,13 @@ namespace json
     operator double();
     operator string();
     Json &operator [](int index);
+    Json &operator [](const char *key);
+    Json &operator [](const string & key);
+    void operator =(const Json &other);
     void append(const Json &other);
     string str ()const;
+    void copy(const Json & other);
+    void clear();
 
  private:
      union Value

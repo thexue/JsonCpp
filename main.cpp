@@ -29,9 +29,14 @@ int main()
    v_array[2]=1.23;
    v_array[3]="hello";
    v_array.append("Yes");
-   std::cout<<v_array.str()<<endl;
+   //std::cout<<v_array.str()<<endl;
    b=v_array[0];
    i=v_array[1];
    f=v_array[2];
    string now=v_array[3];
+   v_object["bool"]=true;
+   v_object["int"]=123;
+   v_object["double"]=1.23;
+   v_object["str"]="hello word";
+  std::cout<< v_object.str()<<endl;
 }
