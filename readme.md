@@ -1,7 +1,9 @@
 # 简易Cpp解析Json练手项目
 [Json数据格式说明](http://json.org/json-en.html)
+[Github完整源码](https://github.com/thexue/JsonCpp)
 ## 基础数据类型表示
 ### Task1：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6dd2e2355f1c426ba36a258f9d7bfb82.png)
 ### 设计思路
 通过枚举表示Json的数据type，根据type不同来使用构造函数，给m_value实际的值
@@ -44,8 +46,8 @@
 };
 ```
 ### Task2
-实现逆向赋值
 
+实现逆向赋值
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2b00b46b039840a1b5d0d216e49664a9.png)
 ### 设计思路
 重载一下基本类型运算符
@@ -58,7 +60,6 @@
 ### Task3
 
 实现数组相关API
-
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e37593b7431e4f56b66ebd40baae2a88.png)
 
 ```cpp
@@ -121,4 +122,45 @@ output：[true,123,1.23,"hello","Yes"]
     void remove(const string key);
     void remove(const char*key);
     
+```
+### Task6
+1:完成基本数据类型的解析：NULL，int，double,string
+2:完成符合类型解析：array，object
+
+```cpp
+ string str="null";
+  Json v;
+  v.parse(str);
+  cout<<v.str()<<endl;
+  str="true";
+  v.parse(str);
+  cout<<v.str()<<endl;
+  str="false";
+  v.parse(str);
+  cout<<v.str()<<endl;
+  str="123";
+   v.parse(str);
+  cout<<v.str()<<endl;
+  str="1.23";
+   v.parse(str);
+  cout<<v.str()<<endl;
+  str="-1.23";
+   v.parse(str);
+  cout<<v.str()<<endl;
+  str="\"hello\"";
+    v.parse(str);
+  cout<<v.str()<<endl;
+  str="[1,2]";
+    v.parse(str);
+  cout<<v.str()<<endl;
+  str="[1,  2,3  ,\"true\",true,    false,1.23,-100,-0]";
+    v.parse(str);
+  cout<<v.str()<<endl;
+  // str="{\"name\":Alic,\"age\":18}";
+   str="{\"a\": 1,\"b\":\"2\"}";
+    v.parse(str);
+   cout<<v.str()<<endl;
+   str="{\"name\":\"Alice\",\"age\": 18}";
+    v.parse(str);
+  cout<<v.str()<<endl;
 ```

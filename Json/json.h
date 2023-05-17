@@ -87,6 +87,7 @@ namespace json
     void remove(int index);
     void remove(const string key);
     void remove(const char*key);
+    void parse(const string & str);
    
   union Value
      {
