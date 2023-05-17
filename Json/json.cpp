@@ -1,6 +1,7 @@
 
 #include"json.h"
 #include<sstream>
+#include"parser.h"
 using namespace Xzs::json;
 Json::Json(): m_type(json_null)
 {
@@ -49,7 +50,7 @@ Json::Json(Type type):m_type(type)
     break;
     case json_string:
     m_value.m_string=new string();
-    default:
+
     break;
    }
 }
@@ -403,3 +404,9 @@ void Json:: clear()
     {
           return !(*this==other);
     }
+ void Json::parse(const string & str)
+ {
+   Parser p;
+   p.load(str);
+   *this=p.parse();
+ }
